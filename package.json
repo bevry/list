@@ -1,7 +1,7 @@
 {
   "name": "@bevry/list",
   "version": "1.0.0",
-  "description": "List/array/set utility functions: union, intersect, complement, unique, first, last, has, add",
+  "description": "List/array/set utility functions: union, intersect, complement, unique, first, last, has, add, toggle",
   "homepage": "https://github.com/bevry/list",
   "license": "MIT",
   "keywords": [
@@ -25,6 +25,7 @@
     "node",
     "set",
     "sets",
+    "toggle",
     "typed",
     "types",
     "typescript",
