@@ -74,8 +74,20 @@ export function intersect<T>(list: Array<T>, allowlist: Array<T>) {
  * https://en.wikipedia.org/wiki/Naive_set_theory
  * @param list The superset.
  * @param blacklist The excluded subset.
- *
  */
 export function complement<T>(list: Array<T>, blacklist: Array<T>) {
 	return list.filter((value) => blacklist.includes(value) === false)
+}
+
+/** Flatten the array, merging any nested array no matter the depth, into a single array. */
+export function flatten<T>(list: Array<T | Array<T>>): Array<T> {
+	const result = []
+	for (const item of list) {
+		if (Array.isArray(item)) {
+			result.push(...flatten(item))
+		} else {
+			result.push(item)
+		}
+	}
+	return result
 }
