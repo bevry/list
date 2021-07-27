@@ -1,5 +1,9 @@
 # History
 
+## v1.1.1 2021 July 27
+
+-   Seems npm lost the last package, so republish.
+
 ## v1.1.0 2021 July 27
 
 -   Added `flatten`
