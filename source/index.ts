@@ -91,3 +91,20 @@ export function flatten<T>(list: Array<T | Array<T>>): Array<T> {
 	}
 	return result
 }
+
+/** Fetch every item in the array, until a particular one. */
+export function until<T>(
+	list: Array<T>,
+	until: T,
+	inclusive: boolean = false
+): Array<T> {
+	const result = []
+	for (const item of list) {
+		if (item === until) {
+			if (inclusive) result.push(item)
+			break
+		}
+		result.push(item)
+	}
+	return result
+}
