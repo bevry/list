@@ -1,5 +1,11 @@
 # History
 
+## v1.7.0 2021 July 30
+
+-   Added generics for more things
+-   Removed object and map support for `has`, as it wasn't used anywhere and was too difficult to type check
+-   Updated dependencies, [base files](https://github.com/bevry/base), and [editions](https://editions.bevry.me) using [boundation](https://github.com/bevry/boundation)
+
 ## v1.6.0 2021 July 30
 
 -   Add `append`

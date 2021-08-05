@@ -1,3 +1,5 @@
+export type List<I> = Array<I> | Set<I>
+
 /** Get the first item in the array */
 export function first<T>(arr: Array<T>) {
 	return arr[0]
@@ -8,14 +10,16 @@ export function last<T>(arr: Array<T>) {
 	return arr[arr.length - 1]
 }
 
-/** Check if the list includes the item, regardless of wether the list is an Array, Set, or Plain Object */
-export function has(list: any = [], item: any): boolean {
+/** Check if the list includes the item */
+export function has<T>(list: List<T> = [], item: T): boolean {
+	// @ts-ignore
 	const check = list.has || list.includes
-	return check ? check.call(list, item) : list[item] != null
+	return check.call(list, item)
 }
 
-/** Add the items to the list, regardless of whether the list is an Array or Set */
-export function append(list: any, items: Array<any>) {
+/** Add the items to the list */
+export function append<T>(list: List<T>, items: List<T>) {
+	// @ts-ignore
 	const add = list.add || list.push
 	for (const item of items) {
 		add.call(list, item)
@@ -23,13 +27,13 @@ export function append(list: any, items: Array<any>) {
 	return list
 }
 
-/** Add the item(s) to the list, regardless of whether the list is an Array or Set */
-export function add(list: any, ...items: any) {
+/** Add the item(s) to the list */
+export function add<T>(list: List<T>, ...items: Array<T>) {
 	return append(list, items)
 }
 
 /** Add or remove the item within the set based on whether a flag is truthy */
-export function toggle<T>(list: Set<T>, value: T, flag: any) {
+export function toggle<T>(list: Set<T>, value: T | Array<T>, flag: any) {
 	if (Array.isArray(value)) {
 		for (const v of value) {
 			toggle(list, v, flag)
@@ -97,9 +101,9 @@ export function flatten<T>(list: Array<T | Array<T>>): Array<T> {
 	return result
 }
 
-/** Fetch every item in the array, until a particular one. */
+/** Fetch every item in the list, until a particular one. */
 export function until<T>(
-	list: Array<T>,
+	list: List<T>,
 	until: T,
 	inclusive: boolean = false
 ): Array<T> {
