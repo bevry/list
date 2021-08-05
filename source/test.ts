@@ -1,9 +1,19 @@
 import { deepEqual } from 'assert-helpers'
 import kava from 'kava'
 
-import { unique, flatten, until } from './index.js'
+import { add, append, unique, flatten, until } from './index.js'
 
 kava.suite('@bevry/list', function (suite, test) {
+	test('append', function () {
+		const expected = append(new Set([1, 2, 3]), [3, 4])
+		const actual = new Set([1, 2, 3, 4])
+		deepEqual(actual, expected)
+	})
+	test('add', function () {
+		const expected = add([1, 2, 3], 3, 4)
+		const actual = [1, 2, 3, 3, 4]
+		deepEqual(actual, expected)
+	})
 	test('flatten', function () {
 		const expected = [1, 2, 3, 4]
 		const actual = flatten([1, [2, [3, [4]]]])

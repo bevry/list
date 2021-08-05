@@ -14,13 +14,18 @@ export function has(list: any = [], item: any): boolean {
 	return check ? check.call(list, item) : list[item] != null
 }
 
-/** Add the item(s) to the list, regardless of whether the list is an Array or Set */
-export function add(list: any, ...items: any) {
+/** Add the items to the list, regardless of whether the list is an Array or Set */
+export function append(list: any, items: Array<any>) {
 	const add = list.add || list.push
 	for (const item of items) {
 		add.call(list, item)
 	}
 	return list
+}
+
+/** Add the item(s) to the list, regardless of whether the list is an Array or Set */
+export function add(list: any, ...items: any) {
+	return append(list, items)
 }
 
 /** Add or remove the item within the set based on whether a flag is truthy */
