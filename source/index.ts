@@ -105,7 +105,7 @@ export function flatten<T>(list: Array<T | Array<T>>): Array<T> {
 export function until<T>(
 	list: List<T>,
 	until: T,
-	inclusive: boolean = false
+	inclusive: boolean = false,
 ): Array<T> {
 	const result = []
 	for (const item of list) {
